@@ -72,7 +72,7 @@ chatForm.addEventListener("submit", async (e) => {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        messages: conversationHistory // <--- This must be conversationHistory, not messages!
+        messages: conversationHistory
       })
     });
 
