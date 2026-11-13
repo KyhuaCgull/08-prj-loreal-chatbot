@@ -65,16 +65,16 @@ chatForm.addEventListener("submit", async (e) => {
   chatWindow.scrollTop = chatWindow.scrollHeight;
 
   try {
-    // Change this line in script.js:
-const response = await fetch('https://08-prj-loreal-chatbot.penguin8kyle.workers.dev', {
-    method: 'POST',
-    headers: {
-        'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({
-        messages: messages // Make sure this matches your local message array variable name!
-    })
-});
+    // Fixed: Uses WORKER_URL variable, passes conversationHistory, and fixes syntax braces
+    const response = await fetch(WORKER_URL, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        messages: conversationHistory,
+      }),
+    });
 
     if (!response.ok) {
       throw new Error("Failed to communicate with Cloudflare Worker.");
