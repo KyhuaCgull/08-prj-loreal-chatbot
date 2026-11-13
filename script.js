@@ -67,13 +67,13 @@ chatForm.addEventListener("submit", async (e) => {
   try {
     // Fixed: Uses WORKER_URL variable, passes conversationHistory, and fixes syntax braces
     const response = await fetch(WORKER_URL, {
-      method: "POST",
+      method: 'POST',
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        messages: conversationHistory,
-      }),
+        messages: conversationHistory // <--- This must be conversationHistory, not messages!
+      })
     });
 
     if (!response.ok) {
